@@ -7,7 +7,8 @@ const app = exppress();
 
 app.get("/", function (req, res) {
   const url =
-    "https://api.openweathermap.org/data/2.5/weather?q=Irvine&appid=cbe4290158a73f5343597226cb278bad&units=imperial";
+    "https://api.openweathermap.org/data/2.5/weather?q=Irvine&units=imperial&appid=" +
+    process.env.WEATHER_API_KEY;
   https.get(url, function (response) {
     //checking the response from API call
     console.log("this is reponse", response.statusCode);
