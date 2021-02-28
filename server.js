@@ -1,18 +1,30 @@
 require("dotenv").config();
-const e = require("express");
+
 const exppress = require("express");
-// const bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 const https = require("https");
 
 const app = exppress();
+app.use(bodyParser.urlencoded({ extended: true })); // use for getting data from req.body
 
 const key = process.env.WEATHER_API_KEY;
 
 app.get("/", function (req, res) {
+  res.sendFile(__dirname + "/index.html");
+});
+
+app.post("/", function (req, res) {
+  const userInput = req.body.cityName;
+  const units = "imperial";
   const url =
-    "https://api.openweathermap.org/data/2.5/weather?q=Irvine&units=imperial&appid=" +
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
+    userInput +
+    "&units=" +
+    units +
+    "&appid=" +
     key;
 
+  // Making API call to get weather data
   https
     .get(url, function (response) {
       //checking the response from API call
@@ -20,19 +32,18 @@ app.get("/", function (req, res) {
 
       //getting weather data from API
       response.on("data", function (data) {
+        //parse data from 3rd party API
         const weatherData = JSON.parse(data);
-        console.log("weatherData", weatherData);
-
         const temparautre = weatherData.main.temp;
         const description = weatherData.weather[0].description;
         const windSpeed = weatherData.wind.speed;
         const icon = weatherData.weather[0].icon;
         const imgUrl = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
+        res.write("<p> The weather is currently " + description + "<p>");
         res.write(
-          "<p> The weather in Irvine describes as " + description + "<p>"
-        );
-        res.write(
-          "<h1>Temparautre in Irvine is " +
+          "<h1>The temparautre in " +
+            userInput +
+            " is " +
             temparautre +
             "F. And the wind speed is " +
             windSpeed +
@@ -42,11 +53,10 @@ app.get("/", function (req, res) {
         res.send();
       });
     })
+
     .on("error", (e) => {
       console.log("error", e);
     });
-
-  // res.sendFile(__dirname + "/index.html");
 });
 
 app.listen(3000, function () {
