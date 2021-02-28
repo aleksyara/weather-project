@@ -1,18 +1,19 @@
 require("dotenv").config();
 
-const exppress = require("express");
+const express = require("express");
 const bodyParser = require("body-parser");
 const https = require("https");
 
-const app = exppress();
+const app = express();
 app.use(bodyParser.urlencoded({ extended: true })); // use for getting data from req.body
 
-const key = process.env.WEATHER_API_KEY;
+const key = process.env.WEATHER_API_KEY; //key autherntication
 
 app.get("/", function (req, res) {
   res.sendFile(__dirname + "/index.html");
 });
 
+// Catch user input and render weather data
 app.post("/", function (req, res) {
   const userInput = req.body.cityName;
   const units = "imperial";
