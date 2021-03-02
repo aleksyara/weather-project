@@ -86,3 +86,7 @@
 .overflow-hidden {
   overflow: hidden;
 }
+
+.bankok {
+  background-image: url("../img/bangkok.jpeg");
+}

@@ -5,9 +5,6 @@ const bodyParser = require("body-parser");
 const https = require("https");
 
 const app = express();
-app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
-app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); // redirect JS jQuery
-app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
 
 app.use(bodyParser.urlencoded({ extended: true })); // use for getting data from req.body
 
@@ -20,14 +17,6 @@ app.get("/", function (req, res) {
 
 
 // Landing Main Page
-
-
-
-
-
-
-
-
 
 // Catch user input and render weather data
 app.post("/", function (req, res) {
@@ -56,18 +45,19 @@ app.post("/", function (req, res) {
         const windSpeed = weatherData.wind.speed;
         const icon = weatherData.weather[0].icon;
         const imgUrl = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
-        res.write("<p> The weather is currently " + description + "<p>");
-        res.write(
-          "<h1>The temparautre in " +
-            userInput +
-            " is " +
-            temparautre +
-            "F. And the wind speed is " +
-            windSpeed +
-            "mph. </h1>"
-        );
-        res.write("<img src=" + imgUrl + ">");
-        res.send();
+        // res.write("<p> The weather is currently " + description + "<p>");
+        // res.write(
+        //   "<h1>The temparautre in " +
+        //     userInput +
+        //     " is " +
+        //     temparautre +
+        //     "F. And the wind speed is " +
+        //     windSpeed +
+        //     "mph. </h1>"
+        // );
+        // res.write("<img src=" + imgUrl + ">");
+        // res.send();
+        res.sendFile(__dirname + "/views/city.html");
       });
     })
 
