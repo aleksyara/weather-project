@@ -5,13 +5,29 @@ const bodyParser = require("body-parser");
 const https = require("https");
 
 const app = express();
+app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
+app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); // redirect JS jQuery
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
+
 app.use(bodyParser.urlencoded({ extended: true })); // use for getting data from req.body
 
 const key = process.env.WEATHER_API_KEY; //key autherntication
+app.use(express.static(__dirname + '/public'));
 
 app.get("/", function (req, res) {
   res.sendFile(__dirname + "/index.html");
 });
+
+
+// Landing Main Page
+
+
+
+
+
+
+
+
 
 // Catch user input and render weather data
 app.post("/", function (req, res) {

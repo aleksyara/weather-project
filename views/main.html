@@ -10,33 +10,33 @@
     <meta name="author" content="" />
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico" />
 
-    <title>What's the Weather Today?</title>
+    <title>Product example for Bootstrap</title>
 
-    <!-- <link
+    <link
       rel="canonical"
       href="https://getbootstrap.com/docs/4.0/examples/product/"
-    /> -->
+    />
 
     <!-- Bootstrap core CSS -->
     <!-- Latest compiled and minified CSS -->
-    <!-- <link
+    <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
       integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
       crossorigin="anonymous"
-    /> -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-      crossorigin="anonymous"
     />
+
     <!-- Custom styles for this template -->
-    <link href="/public/css/styles.css" />
+    <link href="/css/styles.css" rel="stylesheet" />
   </head>
 
   <body>
     <nav class="site-header sticky-top py-1">
+      <form action="/" method="post">
+        <label for="cityInput">City Name:</label>
+        <input id="cityInput" type="text" name="cityName">
+        <button type="submit">Go!</button>
+      </form>
       <div
         class="container d-flex flex-column flex-md-row justify-content-between"
       >
@@ -77,15 +77,9 @@
     >
       <div class="col-md-5 p-lg-5 mx-auto my-5">
         <h1 class="display-4 font-weight-normal">Punny headline</h1>
-
-        <form action="/" method="post">
-          <label for="cityInput">City Name:</label>
-          <input id="cityInput" type="text" name="cityName" />
-          <button type="submit">Go!</button>
-        </form>
-
         <p class="lead font-weight-normal">
-          Check the weather in your favorit destinatioin
+          And an even wittier subheading to boot. Jumpstart your marketing
+          efforts with this example based on Apple's marketing pages.
         </p>
         <a class="btn btn-outline-secondary" href="#">Coming soon</a>
       </div>
@@ -272,7 +266,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <!-- <script
+    <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
       crossorigin="anonymous"
@@ -284,16 +278,14 @@
         );
     </script>
     <script src="../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script> -->
-    <!-- <script src="/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/vendor/holder.min.js"></script> -->
-
-    <!-- <script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <script>
       Holder.addTheme("thumb", {
         bg: "#55595c",
         fg: "#eceeef",
         text: "Thumbnail",
       });
-    </script> -->
+    </script>
   </body>
 </html>
